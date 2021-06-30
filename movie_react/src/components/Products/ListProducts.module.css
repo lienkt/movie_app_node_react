@@ -1,0 +1,9 @@
+.title {
+    color: blue
+}
+
+.delete {
+    color: red;
+    cursor: pointer;
+    font-size: .70rem;
+}
