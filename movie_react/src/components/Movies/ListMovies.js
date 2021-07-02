@@ -30,7 +30,6 @@ const ListMovies = () => {
         history.push("/movies")
     }
 
-	
     return (
         <div>
             <FormAddMovie />
@@ -38,8 +37,15 @@ const ListMovies = () => {
             <ul>
                 {movies.map((movie) => (
                     <li key={movie._id}>
-                        <Link to={`/movies/${movie._id}/edit`}>{movie.title}: {movie.author};</Link>&nbsp;
-                        <span className={styles.delete} onClick={(e) => onClickHandler(movie._id)}>X</span>
+                        <div>
+                            Title: {movie.title};
+                            Author: {movie.author};
+                            Type: {movie.type};
+                            Release Date: {movie.releaseDate};
+                            Rating: {movie.rating}
+                            <Link to={`/movies/${movie._id}/edit`} className={styles.edit}> edit</Link>&nbsp;
+                            <span className={styles.delete} onClick={(e) => onClickHandler(movie._id)}> delete</span>
+                        </div>
                     </li>
                 ))}
             </ul>

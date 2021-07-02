@@ -2,8 +2,12 @@
     color: blue
 }
 
+.edit {
+    color: #03a9f4;
+    cursor: pointer;
+}
+
 .delete {
     color: red;
     cursor: pointer;
-    font-size: .70rem;
 }
