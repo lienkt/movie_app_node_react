@@ -1,0 +1,11 @@
+.form {
+    color: blue
+}
+
+.form span {
+    color: #03a9f4
+}
+
+.form .submit {
+    margin-top: 10px;
+}

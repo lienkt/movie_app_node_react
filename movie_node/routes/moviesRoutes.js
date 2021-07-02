@@ -30,8 +30,13 @@ Router.get('/:movieId', (req, res, next) => {
 
 Router.post('/', function (req, res, next) {
     let movie = new movieModel({
-        name: req.body.name,
-        price: req.body.price
+        title: req.body.title,
+        author: req.body.author,
+        type: req.body.type,
+        releaseDate: req.body.releaseDate,
+        thumbnail: req.body.thumbnail,
+        url: req.body.url,
+        rating: req.body.rating
     })
 
     movie.save()
@@ -47,8 +52,13 @@ Router.put('/:movieId', function (req, res, next) {
     movieModel.findOneAndUpdate({
         _id: movieId
     }, {
-        name: req.body.name,
-        price: req.body.price
+        title: req.body.title,
+        author: req.body.author,
+        type: req.body.type,
+        releaseDate: req.body.releaseDate,
+        thumbnail: req.body.thumbnail,
+        url: req.body.url,
+        rating: req.body.rating
     })
     .then(movie => res.status(200).send(movie))
     .catch(error => next(error))
