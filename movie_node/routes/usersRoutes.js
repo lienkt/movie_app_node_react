@@ -32,19 +32,12 @@ Router.get('/:userId', (req, res, next) => {
 })
 
 Router.post('/', function (req, res, next) {
-    let roleIn = req.body.role
-    let contactIn = req.body.contact
-    let addressIn = req.body.address
-    let userIn = req.body.user
 
     let user = new userModel({
-        title: req.body.title,
-        userDirector: req.body.userDirector,
-        category: req.body.category,
-        releaseDate: req.body.releaseDate,
-        thumbnail: req.body.thumbnail,
-        url: req.body.url,
-        rating: null
+        email: req.body.email,
+        password: req.body.password,
+        roleId: req.body.roleId,
+        contactId: req.body.contactId
     })
     user.save()
     .then(user => {res.status(200).send(user)})
@@ -59,13 +52,10 @@ Router.put('/:userId', function (req, res, next) {
     userModel.findOneAndUpdate({
         _id: userId
     }, {
-        title: req.body.title,
-        userDirector: req.body.userDirector,
-        category: req.body.category,
-        releaseDate: req.body.releaseDate,
-        thumbnail: req.body.thumbnail,
-        url: req.body.url,
-        rating: req.body.rating
+        email: req.body.email,
+        password: req.body.password,
+        roleId: req.body.roleId,
+        contactId: req.body.contactId
     })
     .then(user => res.status(200).send(user))
     .catch(error => next(error))

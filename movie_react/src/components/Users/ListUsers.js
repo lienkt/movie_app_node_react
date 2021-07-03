@@ -31,11 +31,7 @@ const ListUsers = () => {
                 {users.map((user) => (
                     <li key={user._id}>
                         <div>
-                            Title: {user.title};
-                            user Director: {user.userDirector};
-                            Category: {user.category};
-                            Release Date: {user.releaseDate};
-                            Rating: {user.rating}
+                            Email: {user.email};
                             <Link to={`/users/${user._id}/edit`} className={styles.edit}> edit</Link>&nbsp;
                             <span className={styles.delete} onClick={(e) => onClickHandler(user._id)}> delete</span>
                         </div>

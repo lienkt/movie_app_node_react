@@ -1,11 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useHistory } from "react-router-dom";
-import { addUsers } from '../../services/Users'
-
+import { addUsers, getRoles } from '../../services/Users'
+import Select from 'react-select'
 import styles from './FormAddUser.module.css'
 
 const FormAddUser = () => {
 	let history = useHistory();
+  const [roles, setRoles] = useState([])
+  
+  useEffect(() => {
+    (async () => {
+        let fetchedRoles = await getRoles()
+        const options = fetchedRoles.map(r => ({
+          "value" : r._id,
+          "label" : r.name
+        }))
+        setRoles(options)
+    })()
+  }, [])
+
   const [user, setUser] = useState({
 		email: "",
 		password: "",
@@ -24,9 +37,6 @@ const FormAddUser = () => {
 		street: "",
 		number: ""
 	})
-  const [role, setRole] = useState({
-		name: ""
-	})
 	
   const onChangeHandler = async (e) => {
     const {name, value} = e.target
@@ -34,8 +44,7 @@ const FormAddUser = () => {
   }
 
   const onChangeRoleHandler = async (e) => {
-    const {name, value} = e.target
-    setRole({...role, [name]: value});
+    setUser({...user, roleId: e.value});
   }
 
   const onChangeContactHandler = async (e) => {
@@ -52,7 +61,6 @@ const FormAddUser = () => {
     e.preventDefault();
     const input = {
       user: user,
-      role: role,
       contact: contact,
       address: address
     }
@@ -77,7 +85,7 @@ const FormAddUser = () => {
           </div>
           <div>
             <span>Role: </span>
-            <input type="text" name="name" value={role.name} onChange={onChangeRoleHandler} />
+            <Select options={roles} onChange={onChangeRoleHandler} />
           </div>
           <div>
             <span>Birth Date: </span>
