@@ -5,8 +5,11 @@ const cors    = require('cors')
 const helmet  = require('helmet')
 
 const authRoute = require('./routes/authRoutes')
-const productRoute = require('./routes/productsRoutes')
 const moviesRoute = require('./routes/moviesRoutes')
+const rolesRoutes = require('./routes/rolesRoutes')
+const addressesRoutes = require('./routes/addressesRoutes')
+const contactsRoutes = require('./routes/contactsRoutes')
+const usersRoutes = require('./routes/usersRoutes')
 
 const notFound = require('./middlewares/notFound')
 const errorHandler = require('./middlewares/ErrorHandler')
@@ -28,8 +31,11 @@ app.get('/', (req, res) => {
 })
 
 app.use('/', authRoute)
-app.use('/products', productRoute)
 app.use('/movies', moviesRoute)
+app.use('/roles', rolesRoutes)
+app.use('/addresses', addressesRoutes)
+app.use('/contacts', contactsRoutes)
+app.use('/users', usersRoutes)
 
 app.use(notFound)
 app.use(errorHandler)

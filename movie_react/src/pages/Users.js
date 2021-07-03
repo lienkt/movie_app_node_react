@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom'
-import EditMovies from '../components/Movies/EditMovies'
+import ListUsers from '../components/Users/ListUsers'
 
 export default () => {
     let history = useHistory();
@@ -9,7 +9,8 @@ export default () => {
     }
 
     return (<>
-            <EditMovies />
+            <ListUsers />
+            <button onClick={handleClick}>Home Page</button>
         </>
     )
 }

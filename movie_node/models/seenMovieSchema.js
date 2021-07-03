@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-const productModel = new mongoose.Schema({
-    name: {
+const seenMovieSchema = new mongoose.Schema({
+    userId: {
         type: String,
-        require: true,
+        require: true
     },
-    price: {
-        type: Number,
+    movieId: {
+        type: String,
         require: true
     }
 }, {
@@ -16,4 +16,4 @@ const productModel = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('products', productModel)
+module.exports = mongoose.model('seenMovies', seenMovieSchema)

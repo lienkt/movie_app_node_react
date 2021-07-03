@@ -6,9 +6,13 @@ import styles from './FormAddMovie.module.css'
 
 const FormAddMovie = () => {
 	let history = useHistory();
-    const [movie, setMovie] = useState({
-		name: "",
-		price: 0
+  const [movie, setMovie] = useState({
+		title: "",
+		movieDirector: "",
+		category: "",
+		releaseDate: "",
+		thumbnail: "",
+		url: ""
 	})
 	
   const onChangeHandler = async (e) => {
@@ -18,9 +22,8 @@ const FormAddMovie = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-  await addMovies(movie)
-  history.push("/movies")
-
+    await addMovies(movie)
+    history.push("/movies")
   }
 
   return (
@@ -37,8 +40,8 @@ const FormAddMovie = () => {
             <input type="text" name="movieDirector" value={movie.movieDirector} onChange={onChangeHandler} />
           </div>
           <div>
-            <span>Type: </span>
-            <input type="text" name="type" value={movie.type} onChange={onChangeHandler} />
+            <span>Category: </span>
+            <input type="text" name="category" value={movie.category} onChange={onChangeHandler} />
           </div>
           <div>
             <span>Release Date: </span>

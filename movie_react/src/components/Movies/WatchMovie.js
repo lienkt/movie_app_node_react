@@ -1,26 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom'
+import { getMovieById } from '../../services/Movies'
 
-import styles from './FormAddMovie.module.css'
+import styles from './WatchMovie.module.css'
 
-const WatchMovies = () => {
+const WatchMovie = () => {
     let { movieId } = useParams()
     const [movie, setMovie] = useState({})
 
     console.log(movieId)
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/movies/${movieId}`, {
-            method: 'GET',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(movie => {
-            setMovie(movie)
-        })
+        (async () => {
+            let result = await getMovieById(movieId)
+            setMovie(result)
+        })()
+
     }, [movieId])
 
     return <section>
@@ -34,7 +29,7 @@ const WatchMovies = () => {
             <div>
                 Title: {movie.title};
                 Movie Director: {movie.movieDirector};
-                Type: {movie.type};
+                Category: {movie.category};
                 Release Date: {movie.releaseDate};
                 Rating: {movie.rating}
             </div>
@@ -43,4 +38,4 @@ const WatchMovies = () => {
     </section>
 }
 
-export default WatchMovies
+export default WatchMovie

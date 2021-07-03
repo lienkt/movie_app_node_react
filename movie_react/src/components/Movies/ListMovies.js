@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getMovies } from '../../services/Movies'
+import { getMovies, deleteMovie } from '../../services/Movies'
 import { useHistory, Link } from 'react-router-dom'
 
 import styles from './ListMovies.module.css'
@@ -18,16 +18,10 @@ const ListMovies = () => {
     }, [])
 	
     const onClickHandler = (movieId) => {
-        console.log('onClick !' + movieId)
-
-        fetch(`${process.env.REACT_APP_API_URL}/movies/${movieId}`, {
-            method: 'DELETE',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            }
-        })
-        history.push("/movies")
+        (async () => {
+            await deleteMovie(movieId)
+            history.push("/movies")
+        })()
     }
 
     return (
@@ -40,7 +34,7 @@ const ListMovies = () => {
                         <div>
                             Title: {movie.title};
                             Movie Director: {movie.movieDirector};
-                            Type: {movie.type};
+                            Category: {movie.category};
                             Release Date: {movie.releaseDate};
                             Rating: {movie.rating}
                             <Link to={`/movies/${movie._id}/edit`} className={styles.edit}> edit</Link>&nbsp;

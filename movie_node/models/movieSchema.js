@@ -9,7 +9,7 @@ const movieModel = new mongoose.Schema({
         type: String,
         require: true
     },
-    type: {
+    category: {
         type: String,
         require: true
     },

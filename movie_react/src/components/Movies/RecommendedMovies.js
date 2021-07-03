@@ -27,7 +27,7 @@ const RecommendedMovies = () => {
                         <div>
                             Title: {movie.title};
                             Movie Director: {movie.movieDirector};
-                            Type: {movie.type};
+                            Category: {movie.category};
                             Release Date: {movie.releaseDate};
                             Rating: {movie.rating}
                             <Link to={`/movies/${movie._id}/watch`} className={styles.watch}> watch</Link>&nbsp;

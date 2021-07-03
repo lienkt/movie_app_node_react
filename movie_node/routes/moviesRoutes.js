@@ -32,11 +32,11 @@ Router.post('/', function (req, res, next) {
     let movie = new movieModel({
         title: req.body.title,
         movieDirector: req.body.movieDirector,
-        type: req.body.type,
+        category: req.body.category,
         releaseDate: req.body.releaseDate,
         thumbnail: req.body.thumbnail,
         url: req.body.url,
-        rating: req.body.rating
+        rating: null
     })
 
     movie.save()
@@ -54,7 +54,7 @@ Router.put('/:movieId', function (req, res, next) {
     }, {
         title: req.body.title,
         movieDirector: req.body.movieDirector,
-        type: req.body.type,
+        category: req.body.category,
         releaseDate: req.body.releaseDate,
         thumbnail: req.body.thumbnail,
         url: req.body.url,
