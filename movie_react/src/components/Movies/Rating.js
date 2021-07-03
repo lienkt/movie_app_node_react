@@ -3,7 +3,7 @@ import { useParams, Link, useHistory } from 'react-router-dom'
 
 import styles from './FormAddMovie.module.css'
 
-const EditMovies = () => {
+const Rating = () => {
     let { movieId } = useParams()
     let history = useHistory()
     const [movie, setMovie] = useState({})
@@ -50,32 +50,13 @@ const EditMovies = () => {
         <h1>{movie.name}</h1>
         <form onSubmit={onSubmitHandler}>
             <div className={styles.form}>
+                <div>Title: {movie.title}</div>
                 <div>
-                    <span>Title: </span>
-                    <input type="text" name="title" value={movie.title} onChange={onChangeHandler} />
-                </div>
-                <div>
-                    <span>Movie Director: </span>
-                    <input type="text" name="movieDirector" value={movie.movieDirector} onChange={onChangeHandler} />
-                </div>
-                <div>
-                    <span>Type: </span>
-                    <input type="text" name="type" value={movie.type} onChange={onChangeHandler} />
-                </div>
-                <div>
-                    <span>Release Date: </span>
-                    <input type="date" name="releaseDate" value={movie.releaseDate} onChange={onChangeHandler} />
-                </div>
-                <div>
-                    <span>Thumbnail url: </span>
-                    <input type="text" name="thumbnail" value={movie.thumbnail} onChange={onChangeHandler} />
-                </div>
-                <div>
-                    <span>Movie url: </span>
-                    <input type="text" name="url" value={movie.url} onChange={onChangeHandler} />
+                    <span>Rating: </span>
+                    <input type="text" name="title" value={movie.rating} onChange={onChangeHandler} />
                 </div>
                 <div className={styles.submit}>
-                    <input type='submit' value='Update' />
+                    <input type='submit' value='Submit' />
                 </div>
             </div>
         </form>
@@ -83,4 +64,4 @@ const EditMovies = () => {
     </section>
 }
 
-export default EditMovies
+export default Rating

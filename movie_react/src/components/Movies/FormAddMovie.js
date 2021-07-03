@@ -33,8 +33,8 @@ const FormAddMovie = () => {
             <input type="text" name="title" value={movie.title} onChange={onChangeHandler} />
           </div>
           <div>
-            <span>Author: </span>
-            <input type="text" name="author" value={movie.author} onChange={onChangeHandler} />
+            <span>Movie Director: </span>
+            <input type="text" name="movieDirector" value={movie.movieDirector} onChange={onChangeHandler} />
           </div>
           <div>
             <span>Type: </span>

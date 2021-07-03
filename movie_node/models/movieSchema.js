@@ -5,7 +5,7 @@ const movieModel = new mongoose.Schema({
         type: String,
         require: true,
     },
-    author: {
+    movieDirector: {
         type: String,
         require: true
     },

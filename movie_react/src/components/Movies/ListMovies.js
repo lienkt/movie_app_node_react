@@ -39,7 +39,7 @@ const ListMovies = () => {
                     <li key={movie._id}>
                         <div>
                             Title: {movie.title};
-                            Author: {movie.author};
+                            Movie Director: {movie.movieDirector};
                             Type: {movie.type};
                             Release Date: {movie.releaseDate};
                             Rating: {movie.rating}

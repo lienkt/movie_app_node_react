@@ -1,7 +1,7 @@
-import Hello from '../components/Hello/Hello'
+import RecommendedMovies from '../components/Movies/RecommendedMovies'
 
 export default () => {
     return (
-        <Hello />
+        <RecommendedMovies />
     )
 }

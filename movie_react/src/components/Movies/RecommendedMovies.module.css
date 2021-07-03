@@ -1,0 +1,15 @@
+.title {
+    color: blue
+}
+.movie {
+    margin-bottom: 20px;
+}
+
+.watch {
+    color: #03a9f4;
+    cursor: pointer;
+}
+
+.thumbnail {
+    width: 200px;
+}
