@@ -16,7 +16,7 @@ const FormAddMovie = () => {
 	})
 	
   const onChangeHandler = async (e) => {
-  const {name, value} = e.target
+    const {name, value} = e.target
     setMovie({...movie, [name]: value});
   }
 

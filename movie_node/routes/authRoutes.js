@@ -16,13 +16,14 @@ Router.post("/login", (req, res, next) => {
         .then(user => {
             if (!user) return res.status(500).json({msg: "Account doesn't exists !"})
 
-            bcrypt.compare(password, user.password, function(error, result) {
-                if (error) return res.status(500).json({msg: error})
+            const result = bcrypt.compareSync(password, user.password);
 
-                if (!result) return res.status(500).json({msg: "Email or password is wrong !"})
-
+            if (!result) {
+                return res.status(500).json({msg: "Email or password is wrong !"})
+            } else {
                 return res.status(200).json({...user._doc, password: ''})
-            });
+            }
+
         })
     } catch (error) {
         res.status(500).json({msg: error.message})

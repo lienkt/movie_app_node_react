@@ -4,10 +4,10 @@ const userModel = require('../models/userSchema')
 const roleModel = require('../models/roleSchema')
 const contactModel = require('../models/contactSchema')
 const addressModel = require('../models/addressSchema')
+const bcrypt = require('bcrypt');
 
 const express = require('express')
 const Router = express.Router()
-
 let users = []
 
 Router.get('/', (req, res, next) => {
@@ -39,11 +39,16 @@ Router.post('/', function (req, res, next) {
         roleId: req.body.roleId,
         contactId: req.body.contactId
     })
+    
+    const hash = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
+    user.password = hash
+
     user.save()
     .then(user => {res.status(200).send(user)})
     .catch(error => {next(error)});
 
     res.status(200).send(user)
+
 })
 
 Router.put('/:userId', function (req, res, next) {

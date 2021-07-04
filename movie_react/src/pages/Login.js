@@ -1,10 +1,9 @@
 
-import Hello from '../components/Hello/Hello'
+import Auth from '../components/Auth/Auth'
 
 const Login = () => {
     return <section>
-        <Hello />
-        <h1>Login !</h1>
+        <Auth />
     </section>
 }
 
