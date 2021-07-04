@@ -7,6 +7,7 @@ import EditMovie from './pages/EditMovie'
 import WatchMovie from './pages/WatchMovie'
 import Users from './pages/Users'
 import EditUser from './pages/EditUser'
+import { useCookies } from 'react-cookie';
 
 function App() {
   return (
