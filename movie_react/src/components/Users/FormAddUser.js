@@ -83,7 +83,7 @@ const FormAddUser = () => {
             <span>Password: </span>
             <input type="password" name="password" value={user.password} onChange={onChangeHandler} />
           </div>
-          <div>
+          <div className={styles.role}>
             <span>Role: </span>
             <Select options={roles} onChange={onChangeRoleHandler} />
           </div>

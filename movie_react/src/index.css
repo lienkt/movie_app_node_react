@@ -17,6 +17,24 @@ code {
 }
 
 a, a:hover, a:focus, a:active {
-  color: purple;
+  color: #03a9f4;
   text-decoration: none;
+}
+.banner {
+  justify-content: center;
+  display: flex;
+  font-size: 45px;
+  color: #ff5722;
+  font-family: cursive;
+  font-weight: 700;
+  margin: 20px;
+}
+.menu-list-movie {
+  display: flex;
+  justify-content: center;
+}
+
+.list-movie {
+  display: flex;
+  margin: 0 20px 0 20px;
 }

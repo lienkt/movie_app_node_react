@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom'
 import ListMovies from '../components/Movies/ListMovies'
 
-export default () => {
+const Movies = () => {
     let history = useHistory();
 
     const handleClick = (e) => {
@@ -14,3 +14,5 @@ export default () => {
         </>
     )
 }
+
+export default Movies

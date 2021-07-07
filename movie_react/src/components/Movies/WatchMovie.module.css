@@ -1,15 +1,49 @@
 .title {
-    color: blue
+    justify-content: center;
+    display: flex;
+    font-size: 45px;
+    color: #ff5722;
+    font-family: cursive;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
+
 .movie {
     margin-bottom: 20px;
 }
 
-.watch {
-    color: #03a9f4;
-    cursor: pointer;
+.video {
+    justify-content: center;
+    display: flex;
 }
 
-.url {
-    width: 400px;
+.infos {
+    justify-content: space-around;
+    display: flex;
+    margin: 20px 20px 20px 20px;
+}
+
+.info {
+    font-size: 15px;
+    color: #606060;
+}
+
+.rate {
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffeb3b;
+    font-family: cursive;
+}
+
+.back {
+    justify-content: center;
+    display: flex;
+    margin-top: 30px;
+}
+
+.ratings {
+    justify-content: center;
+    display: flex;
 }

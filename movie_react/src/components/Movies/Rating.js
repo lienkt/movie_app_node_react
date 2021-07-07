@@ -1,49 +1,50 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import { useParams, Link, useHistory } from 'react-router-dom'
-
+import { getMovieById, editMovies } from '../../services/Movies'
+import { getRatingsByMovieId, addRating } from '../../services/Ratings'
+import { useCookies } from 'react-cookie';
 import styles from './FormAddMovie.module.css'
 
 const Rating = () => {
+    const [cookies] = useCookies(['user'])
     let { movieId } = useParams()
     let history = useHistory()
+    const [rating, setRating] = useState({
+        rating: "",
+        commentTitle: "",
+        commentContent: "",
+        userId: cookies.UserId,
+        movieId: movieId
+    })
     const [movie, setMovie] = useState({})
 
-    console.log(movieId)
-
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/movies/${movieId}`, {
-            method: 'GET',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(movie => {
-            setMovie(movie)
-        })
+        (async () => {
+            let result = await getMovieById(movieId)
+            setMovie(result)
+        })()
+
     }, [movieId])
 
     const onChangeHandler = (e) => {
         const {name, value} = e.target
-        setMovie({...movie, [name]: value})
+        setRating({...rating, [name]: value})
     }
 
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault()
-
-        fetch(`${process.env.REACT_APP_API_URL}/movies/${movieId}`, {
-            method: 'PUT',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(movie)
-        })
-        .then(response => response.json())
-        .then(json => {
-            history.push("/movies")
-        })
+        await addRating(rating)
+        // Get ratings by MovieId:
+        let ratingList = await getRatingsByMovieId(movieId)
+    
+        let sumRating = 0
+        for(let i = 0; i < ratingList.length; i++) {
+            sumRating += ratingList[i].rating
+        }
+        // Calculate rating:
+        movie.rating = parseFloat(sumRating/ratingList.length).toFixed(2)
+        await editMovies(movie)
+        history.push("/movies/"+movie._id+"/watch")
     }
 
     return <section>
@@ -53,14 +54,22 @@ const Rating = () => {
                 <div>Title: {movie.title}</div>
                 <div>
                     <span>Rating: </span>
-                    <input type="text" name="title" value={movie.rating} onChange={onChangeHandler} />
+                    <input type="number" min="1" max="5" name="rating" value={rating.rating} onChange={onChangeHandler} />
+                </div>
+                <div>
+                    <span>Comment Title: </span>
+                    <input type="text" name="commentTitle" value={rating.commentTitle} onChange={onChangeHandler} />
+                </div>
+                <div>
+                    <span>Comment Content: </span>
+                    <input type="text" name="commentContent" value={rating.commentContent} onChange={onChangeHandler} />
                 </div>
                 <div className={styles.submit}>
                     <input type='submit' value='Submit' />
                 </div>
             </div>
         </form>
-        <p><Link to='/movies'>Return to the list</Link></p>
+        <p><Link to={`/movies/${movie._id}/watch`}>Return to the movie</Link></p>
     </section>
 }
 

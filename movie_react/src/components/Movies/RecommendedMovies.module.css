@@ -1,13 +1,27 @@
 .title {
-    color: blue
+    color: black;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
 }
 .movie {
     margin-bottom: 20px;
 }
 
+.name {
+    margin: 10px 0 10px 0;
+}
+
+.info {
+    font-size: 15px;
+    color: #606060;
+}
+
 .watch {
     color: #03a9f4;
     cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .thumbnail {

@@ -1,8 +1,9 @@
-import WatchMovie from '../components/Movies/WatchMovie'
+import Watching from '../components/Movies/WatchMovie'
 
-export default () => {
-    return (<>
-            <WatchMovie />
-        </>
-    )
+const WatchMovie = () => {
+    return <section>
+        <Watching />
+    </section>
 }
+
+export default WatchMovie

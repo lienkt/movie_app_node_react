@@ -1,3 +1,6 @@
+import { deleteSeenByMovieId } from './SeenMovies'
+import { deleteRatingByMovieId } from './Ratings'
+
 export const getMovies = async () => {
 	let response = await fetch(`${process.env.REACT_APP_API_URL}/movies`)
     let movies = await response.json()
@@ -45,6 +48,9 @@ export const editMovies = async (movie) => {
 }
 
 export const deleteMovie = async (movieId) => {
+	// Delete seen and rating:
+	deleteSeenByMovieId(movieId)
+	deleteRatingByMovieId(movieId)
 	await fetch(`${process.env.REACT_APP_API_URL}/movies/${movieId}`, {
 		method: 'DELETE',
 		headers: {

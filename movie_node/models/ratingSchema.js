@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const ratingSchema = new mongoose.Schema({
     rating: {
-        type: String,
+        type: Number,
         require: true
     },
     commentTitle: {
@@ -10,6 +10,10 @@ const ratingSchema = new mongoose.Schema({
     },
     commentContent: {
         type: String
+    },
+    movieId: {
+        type: String,
+        require: true
     },
     userId: {
         type: String,

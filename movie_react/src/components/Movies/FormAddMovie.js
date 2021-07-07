@@ -12,7 +12,8 @@ const FormAddMovie = () => {
 		category: "",
 		releaseDate: "",
 		thumbnail: "",
-		url: ""
+		url: "",
+    rating: null
 	})
 	
   const onChangeHandler = async (e) => {

@@ -9,6 +9,7 @@ let movies = []
 
 Router.get('/', (req, res, next) => {
     movieModel.find()
+    .sort({created_at: 'desc'})
     .then(movies => {
         res.status(200).send(movies);
     })
@@ -36,13 +37,12 @@ Router.post('/', function (req, res, next) {
         releaseDate: req.body.releaseDate,
         thumbnail: req.body.thumbnail,
         url: req.body.url,
-        rating: null
+        rating: req.body.rating
     })
 
     movie.save()
     .then(movie => {res.status(200).send(movie)})
     .catch(error => {next(error)});
-
     res.status(200).send(movie)
 })
 
